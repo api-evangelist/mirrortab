@@ -1,0 +1,195 @@
+openapi: 3.0.3
+info:
+  title: MirrorTab Sessions API
+  version: '1.0'
+  description: Public v1 API to manage MirrorTab sessions. MirrorTab serves a web application through a server-side rendered, isolated browser session so the application DOM and code are never exposed to the end browser, blocking automation, bots, and browser-based attacks. This API creates, lists, and removes those collaborative browser sessions. Authentication is by API key (obtained at https://mirrortab.com/API); free accounts do not have API access.
+  contact:
+    name: MirrorTab
+    email: sales@mirrortab.com
+    url: https://www.mirrortab.com
+  license:
+    name: MIT
+    url: https://github.com/MirrorTab/api_v1/blob/master/LICENSE
+  x-source: https://github.com/MirrorTab/api_v1
+servers:
+- url: https://api.mirrortab.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Sessions
+  description: Create, list, and remove MirrorTab browser sessions.
+paths:
+  /new_session:
+    post:
+      operationId: createSession
+      summary: Create a new MirrorTab session
+      description: Creates a new MirrorTab session and returns the go URL, gocode, and session identifier that end users use to join the isolated session.
+      tags:
+      - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+      responses:
+        '201':
+          description: Session created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSessionResponse'
+        '400':
+          description: Missing api_key or invalid parameters.
+        '401':
+          description: Invalid api_key.
+  /list_sessions:
+    post:
+      operationId: listSessions
+      summary: List existing sessions
+      description: Returns all active sessions associated with the supplied API key.
+      tags:
+      - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListSessionsRequest'
+      responses:
+        '200':
+          description: A map of active sessions keyed by session_id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionMap'
+        '204':
+          description: Valid key with no active sessions.
+        '400':
+          description: Missing api_key.
+        '401':
+          description: Invalid api_key.
+  /remove_session:
+    post:
+      operationId: removeSession
+      summary: Remove a session
+      description: Terminates a specific active session.
+      tags:
+      - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveSessionRequest'
+      responses:
+        '200':
+          description: Session removed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoveSessionResponse'
+        '400':
+          description: Expired session, invalid session_id, or invalid api_key.
+        '401':
+          description: Invalid api_key.
+components:
+  schemas:
+    RemoveSessionResponse:
+      type: object
+      properties:
+        removed:
+          type: string
+          example: 'true'
+    CreateSessionRequest:
+      type: object
+      required:
+      - api_key
+      properties:
+        api_key:
+          type: string
+          description: Your unique API key.
+        session_name:
+          type: string
+          description: Optional display name for the session.
+        permissions:
+          type: string
+          enum:
+          - open
+          - gocode
+          - account
+          default: gocode
+          description: Access level. open = anyone with the URL can join; gocode = a code is generated and anyone with the code can join (default); account = all users must have a MirrorTab account.
+        duration_min:
+          type: integer
+          default: 45
+          description: Minutes before the session is removed.
+        urls:
+          type: array
+          items:
+            type: string
+          description: Optional URLs to open in the MirrorTab session.
+    RemoveSessionRequest:
+      type: object
+      required:
+      - api_key
+      - session_id
+      properties:
+        api_key:
+          type: string
+        session_id:
+          type: string
+    Session:
+      type: object
+      properties:
+        session_name:
+          type: string
+          example: My first MirrorTab Session
+        go_url:
+          type: string
+          format: uri
+          example: https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1
+        kill_time_UTC:
+          type: integer
+          format: int64
+          example: 1642101252956
+        gocode:
+          type: string
+          example: cat-coffee-396
+    ListSessionsRequest:
+      type: object
+      required:
+      - api_key
+      properties:
+        api_key:
+          type: string
+    CreateSessionResponse:
+      type: object
+      properties:
+        session_id:
+          type: string
+          example: rtbvdenadtz0is0rg2f16lzvdazyx1
+        session_name:
+          type: string
+          example: My first MirrorTab session
+        go_url:
+          type: string
+          format: uri
+          example: https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1
+        gocode:
+          type: string
+          example: funpurplecars
+        kill_time_UTC:
+          type: string
+          description: Unix datetime at which the session is removed.
+    SessionMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Session'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: api_key
+      description: API key passed as the api_key field in the request body. Obtain a key at https://mirrortab.com/API. (Represented here as an apiKey scheme; the value is transmitted in the JSON request body per the published docs.)
