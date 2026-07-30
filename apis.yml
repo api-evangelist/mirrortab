@@ -1,8 +1,30 @@
 aid: mirrortab
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mirrortab.png
 name: MirrorTab
-description: 'MirrorTab is a company surfaced as a portfolio company of gv and added to the API Evangelist
-  network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  MirrorTab is a cybersecurity company that stops automated attacks against web
+  applications and APIs by serving the application through an isolated,
+  server-side rendered browser session so the DOM, code, and data are never
+  exposed to the end browser. Rather than detecting bots, it removes the surface
+  they operate on, blocking credential stuffing, agentic-AI automation,
+  man-in-the-browser attacks, malicious extensions, XSS, formjacking,
+  clickjacking, and CSRF without endpoint agents or application code changes.
+  MirrorTab is edge-driven and integrates alongside existing CDNs, WAFs, and
+  fraud platforms. Founded by the CTO and co-founder of Honey (acquired by
+  PayPal), the company also publishes a public v1 REST API to programmatically
+  create, list, and remove MirrorTab browser sessions.
 url: https://raw.githubusercontent.com/api-evangelist/mirrortab/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +34,77 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Enterprise
-apis: []
+- Security
+- Cybersecurity
+- Bot Mitigation
+- Fraud Prevention
+- Browser Isolation
+- Anti-Automation
+apis:
+- aid: mirrortab:mirrortab-sessions-api
+  name: MirrorTab Sessions API
+  description: Create, list, and remove MirrorTab browser sessions.
+  humanURL: https://github.com/MirrorTab/api_v1
+  baseURL: https://api.mirrortab.com
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/mirrortab-sessions-api-openapi.yml
+  - type: APIReference
+    url: https://github.com/MirrorTab/api_v1
+  - type: Authentication
+    url: authentication/mirrortab-authentication.yml
+  - type: ErrorCatalog
+    url: errors/mirrortab-problem-types.yml
+  - type: Conventions
+    url: conventions/mirrortab-conventions.yml
+  - type: DataModel
+    url: data-model/mirrortab-data-model.yml
+  - type: Conformance
+    url: conformance/mirrortab-conformance.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/mirrortab-agentic-access.yml
 - type: Website
   url: https://www.mirrortab.com
+- type: Documentation
+  url: https://github.com/MirrorTab/api_v1
+- type: APIReference
+  url: https://github.com/MirrorTab/api_v1
+- type: GitHubOrganization
+  url: https://github.com/MirrorTab
+- type: Login
+  url: https://mirrortab.com/API
+- type: TermsOfService
+  url: https://www.mirrortab.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.mirrortab.com/privacy-policy
+- type: MCPServer
+  url: mcp/mirrortab-mcp.yml
+- type: LLMsTxt
+  url: llms/mirrortab-llms.txt
+- type: WellKnown
+  url: well-known/mirrortab-well-known.yml
+- type: Lifecycle
+  url: lifecycle/mirrortab-lifecycle.yml
+- type: DomainSecurity
+  url: security/mirrortab-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Authentication
+  url: authentication/mirrortab-authentication.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1
