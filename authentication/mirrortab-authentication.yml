@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/mirrortab-api-openapi.yml
+docs: https://github.com/MirrorTab/api_v1
+notes: >-
+  MirrorTab authenticates every API call with a single API key sent as the
+  api_key field in the JSON request body (not a header or query parameter).
+  Keys are issued from the account dashboard at https://mirrortab.com/API. Free
+  accounts do not have API access; Enterprise and paid tiers gate the number of
+  concurrent sessions and maximum session duration. No OAuth, OIDC, or mTLS
+  surface is published.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - body
+schemes:
+- name: apiKey
+  type: apiKey
+  in: body
+  parameter: api_key
+  description: >-
+    API key passed as the api_key field in the JSON request body. Obtain a key
+    at https://mirrortab.com/API. Represented in the OpenAPI as an apiKey scheme
+    because OpenAPI 3.0 cannot express a body-carried key.
+  sources:
+  - openapi/mirrortab-api-openapi.yml

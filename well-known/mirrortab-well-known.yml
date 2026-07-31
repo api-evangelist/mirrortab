@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of /.well-known/ on MirrorTab hosts
+hosts:
+- host: https://www.mirrortab.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.mirrortab.com
+  note: >-
+    The API host did not complete a TLS/HTTP connection for direct probes
+    (connect failed, status 000); it is edge/isolation-protected, consistent
+    with the product. No /.well-known/ documents could be retrieved.
+  documents:
+  - path: /.well-known/security.txt
+    status: 000
+  - path: /.well-known/openid-configuration
+    status: 000
+  - path: /.well-known/oauth-authorization-server
+    status: 000
+  - path: /.well-known/api-catalog
+    status: 000
+  - path: /.well-known/ai-plugin.json
+    status: 000

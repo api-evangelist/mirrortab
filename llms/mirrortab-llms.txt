@@ -1,0 +1,25 @@
+# MirrorTab
+
+> MirrorTab stops automated attacks against web applications and APIs by serving the app through an isolated, server-side rendered browser session so the DOM, code, and data are never exposed to the end browser. It blocks credential stuffing, agentic-AI automation, man-in-the-browser attacks, malicious extensions, XSS, formjacking, clickjacking, and CSRF without endpoint agents or code changes, integrating alongside existing CDNs, WAFs, and fraud platforms. MirrorTab also publishes a public v1 REST API to create, list, and remove browser sessions.
+
+## APIs
+- [MirrorTab API (v1)](https://github.com/MirrorTab/api_v1): Create, list, and remove MirrorTab sessions. Base URL https://api.mirrortab.com. API-key auth (api_key in the JSON body); free accounts have no API access.
+
+## Specs
+- [OpenAPI 3.0.3](openapi/mirrortab-api-openapi.yml): API Evangelist-generated spec for the MirrorTab v1 session API.
+- [OpenAPI Overlay](overlays/mirrortab-api-overlay.yaml): API Evangelist enhancements.
+
+## Operations
+- createSession — POST /new_session — create a session, returns go_url + gocode.
+- listSessions — POST /list_sessions — list active sessions for the API key.
+- removeSession — POST /remove_session — terminate a session.
+
+## Authentication
+- [Auth profile](authentication/mirrortab-authentication.yml): Single API key sent as the api_key field in the request body; keys from https://mirrortab.com/API.
+
+## Docs
+- [Company site](https://www.mirrortab.com)
+- [API documentation repo](https://github.com/MirrorTab/api_v1)
+- [GitHub organization](https://github.com/MirrorTab)
+- [Terms of Use](https://www.mirrortab.com/terms-of-use)
+- [Privacy Policy](https://www.mirrortab.com/privacy-policy)

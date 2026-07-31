@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mirrortab-api-openapi.yml
+format: http-status
+notes: >-
+  MirrorTab does not publish an RFC 9457 problem+json error envelope; errors are
+  signalled with HTTP status codes and a plain response. Derived from the
+  documented 4xx responses on each operation.
+problems:
+- status: 400
+  title: Bad Request
+  meaning: >-
+    Missing api_key, invalid parameters, an expired session, or an invalid
+    session_id.
+  operations:
+  - openapi/mirrortab-api-openapi.yml#createSession
+  - openapi/mirrortab-api-openapi.yml#listSessions
+  - openapi/mirrortab-api-openapi.yml#removeSession
+- status: 401
+  title: Unauthorized
+  meaning: The supplied api_key is invalid.
+  operations:
+  - openapi/mirrortab-api-openapi.yml#createSession
+  - openapi/mirrortab-api-openapi.yml#listSessions
+  - openapi/mirrortab-api-openapi.yml#removeSession

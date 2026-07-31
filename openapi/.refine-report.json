@@ -1,0 +1,14 @@
+{
+  "provider": "mirrortab",
+  "sources": [
+    "mirrortab-sessions-api-openapi.yml"
+  ],
+  "outputs": [
+    "mirrortab-sessions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

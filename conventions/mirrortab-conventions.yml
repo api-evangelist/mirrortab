@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mirrortab-api-openapi.yml
+docs: https://github.com/MirrorTab/api_v1
+authentication:
+  style: api-key
+  location: request body (api_key field)
+  ref: authentication/mirrortab-authentication.yml
+request:
+  transport: https
+  methods: All operations are POST, including reads (list_sessions).
+  content_type: application/json
+  base_url: https://api.mirrortab.com
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key mechanism is documented. new_session creates a fresh
+    session on each call.
+pagination:
+  supported: false
+  notes: >-
+    list_sessions returns the full map of active sessions keyed by session_id
+    with no paging parameters.
+versioning:
+  scheme: uri-host
+  current: v1
+  notes: Versioned via the api_v1 documentation repo; base host api.mirrortab.com.
+  ref: lifecycle/mirrortab-lifecycle.yml
+errors:
+  envelope: http-status
+  problem_json: false
+  ref: errors/mirrortab-problem-types.yml
+rate_limiting:
+  documented: false
+  notes: >-
+    No rate-limit headers documented. Session count and duration are capped by
+    account tier rather than per-request rate limits.
+metadata:
+  session_name: Optional human label attached at creation and echoed on listing.

@@ -1,0 +1,11 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mirrortab-api-openapi.yml
+skills:
+- file: mirrortab-create-and-share-session.md
+  name: Create and share a MirrorTab session
+  api: openapi/mirrortab-api-openapi.yml
+  operations:
+  - createSession
+  - listSessions
+  - removeSession

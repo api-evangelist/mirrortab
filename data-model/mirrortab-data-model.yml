@@ -1,0 +1,40 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mirrortab-api-openapi.yml
+entities:
+- name: Session
+  description: >-
+    An isolated, server-side rendered MirrorTab browser session that end users
+    join to interact with a protected web application.
+  identifier: session_id
+  fields:
+  - name: session_id
+    type: string
+    description: Unique session identifier (also the key in list_sessions responses).
+  - name: session_name
+    type: string
+    description: Optional human-readable label.
+  - name: go_url
+    type: string
+    description: URL end users open to join the session (https://mirrortab.com/go/<session_id>).
+  - name: gocode
+    type: string
+    description: Short join code generated when permissions=gocode.
+  - name: kill_time_UTC
+    type: integer
+    description: Unix datetime at which the session is automatically removed.
+  - name: permissions
+    type: string
+    enum: [open, gocode, account]
+    description: Join access model (create-time only).
+  - name: duration_min
+    type: integer
+    description: Minutes before automatic removal (create-time only, default 45).
+  - name: urls
+    type: array
+    description: URLs opened in the session at creation (create-time only).
+relationships: []
+notes: >-
+  The API exposes a single first-class entity (Session). There are no
+  cross-entity $ref relationships in the spec; account and API key are implicit
+  auth context, not addressable resources.

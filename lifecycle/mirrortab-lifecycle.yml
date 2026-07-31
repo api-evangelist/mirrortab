@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/MirrorTab/api_v1
+versioning:
+  scheme: uri-host
+  current: v1
+  docs: https://github.com/MirrorTab/api_v1
+  notes: >-
+    Documented as the "Public v1 API" in the MirrorTab/api_v1 repo; served from
+    api.mirrortab.com.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation policy or RFC 8594 Sunset/Deprecation header support.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+notes: >-
+  No status page, SLA document, or roadmap was found on the public site or the
+  api_v1 documentation repo as of this pass.

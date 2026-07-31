@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mirrortab-api-openapi.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; auth is a body API key.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use plain HTTP status codes, not application/problem+json.
+- id: rest
+  conforms: partial
+  evidence: >-
+    JSON over HTTPS, but all operations (including reads) are POST rather than
+    using REST verbs.
+- id: openapi-3.0
+  conforms: true
+  evidence: Captured as an OpenAPI 3.0.3 document in openapi/.
+- id: pagination
+  conforms: false
+  evidence: list_sessions returns the full set with no paging.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key mechanism documented.
