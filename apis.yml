@@ -73,6 +73,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/mirrortab-api-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/mirrortab-agentic-access.yml
 - type: Website
