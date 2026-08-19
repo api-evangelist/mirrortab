@@ -1,0 +1,631 @@
+{
+  "item": [
+    {
+      "id": "97d3e075-7434-4416-83ef-72a59626a897",
+      "name": "Sessions",
+      "description": {
+        "content": "Create, list, and remove MirrorTab browser sessions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b12e5cb-d43d-4198-a04f-670898a99a6c",
+          "name": "Create a new MirrorTab session",
+          "request": {
+            "name": "Create a new MirrorTab session",
+            "description": {
+              "content": "Creates a new MirrorTab session and returns the go URL, gocode, and session identifier that end users use to join the isolated session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "new_session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"<string>\",\n  \"session_name\": \"<string>\",\n  \"permissions\": \"gocode\",\n  \"duration_min\": 45,\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d856a58c-4ca9-42fd-8807-54b8bfb9d671",
+              "name": "Session created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "new_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\",\n  \"session_name\": \"<string>\",\n  \"permissions\": \"gocode\",\n  \"duration_min\": 45,\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"session_id\": \"rtbvdenadtz0is0rg2f16lzvdazyx1\",\n  \"session_name\": \"My first MirrorTab session\",\n  \"go_url\": \"https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1\",\n  \"gocode\": \"funpurplecars\",\n  \"kill_time_UTC\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46c88f19-d69e-4297-99ce-7541cb939f8d",
+              "name": "Missing api_key or invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "new_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\",\n  \"session_name\": \"<string>\",\n  \"permissions\": \"gocode\",\n  \"duration_min\": 45,\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "744789be-df14-4c7a-8a22-4aab373c96a7",
+              "name": "Invalid api_key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "new_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\",\n  \"session_name\": \"<string>\",\n  \"permissions\": \"gocode\",\n  \"duration_min\": 45,\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "493cdf75-db2b-4351-abb5-534d20dbca1f",
+          "name": "List existing sessions",
+          "request": {
+            "name": "List existing sessions",
+            "description": {
+              "content": "Returns all active sessions associated with the supplied API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list_sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ae0ccb0-ccc9-4a14-ba10-4ecd0e3cd389",
+              "name": "A map of active sessions keyed by session_id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list_sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"session_name\": \"My first MirrorTab Session\",\n    \"go_url\": \"https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1\",\n    \"kill_time_UTC\": 1642101252956,\n    \"gocode\": \"cat-coffee-396\"\n  },\n  \"key_1\": {\n    \"session_name\": \"My first MirrorTab Session\",\n    \"go_url\": \"https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1\",\n    \"kill_time_UTC\": 1642101252956,\n    \"gocode\": \"cat-coffee-396\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52539218-3649-4006-b8e8-166280e96b07",
+              "name": "Valid key with no active sessions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list_sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "595f0c61-22a9-4ffe-a95d-f004ba3152a8",
+              "name": "Missing api_key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list_sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a32bcd5-22e7-4170-934f-140c6ad18ebc",
+              "name": "Invalid api_key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list_sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ac48879-7380-4083-9f30-4b9f243d3834",
+          "name": "Remove a session",
+          "request": {
+            "name": "Remove a session",
+            "description": {
+              "content": "Terminates a specific active session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "remove_session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"<string>\",\n  \"session_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dda7839a-1d08-4d12-baa6-7877947d9d25",
+              "name": "Session removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "remove_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\",\n  \"session_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"removed\": \"true\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "052e85c2-2fae-4ad6-91af-0922cd1b3d3e",
+              "name": "Expired session, invalid session_id, or invalid api_key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "remove_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\",\n  \"session_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97ba8c13-5ca8-4126-83b5-012ada59c423",
+              "name": "Invalid api_key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "remove_session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_key\": \"<string>\",\n  \"session_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mirrortab.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "84c31e65-daf5-4657-bb44-9dc4657263ca",
+    "name": "MirrorTab Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public v1 API to manage MirrorTab sessions. MirrorTab serves a web application through a server-side rendered, isolated browser session so the application DOM and code are never exposed to the end browser, blocking automation, bots, and browser-based attacks. This API creates, lists, and removes those collaborative browser sessions. Authentication is by API key (obtained at https://mirrortab.com/API); free accounts do not have API access.\n\nContact Support:\n Name: MirrorTab\n Email: sales@mirrortab.com",
+      "type": "text/plain"
+    }
+  }
+}

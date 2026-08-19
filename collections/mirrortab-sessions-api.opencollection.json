@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MirrorTab Sessions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new MirrorTab session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mirrortab.com/new_session",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new MirrorTab session and returns the go URL, gocode, and session identifier that end users use to join the isolated session."
+        },
+        {
+          "info": {
+            "name": "List existing sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mirrortab.com/list_sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all active sessions associated with the supplied API key."
+        },
+        {
+          "info": {
+            "name": "Remove a session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mirrortab.com/remove_session",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Terminates a specific active session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
