@@ -1,0 +1,27 @@
+# Front Door AI Index — mirrortab — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: mirrortab
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.mirrortab.com
+  final_host: www.mirrortab.com
+  ownership: own
+  owner: mirrortab
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 8
+  host_score: 8
+  density: 9.29
+  words: 861
+  tiers:
+    agentic: 3
+    core: 5
+    model: 0
+  ambiguous: 8
+  top_terms:
+    automation: 8
+    AI: 5
+    agentic: 3
