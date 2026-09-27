@@ -96,10 +96,19 @@ paths:
           description: Invalid api_key.
 components:
   schemas:
-    SessionMap:
+    ListSessionsRequest:
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Session'
+      required:
+      - api_key
+      properties:
+        api_key:
+          type: string
+    RemoveSessionResponse:
+      type: object
+      properties:
+        removed:
+          type: string
+          example: 'true'
     RemoveSessionRequest:
       type: object
       required:
@@ -110,31 +119,6 @@ components:
           type: string
         session_id:
           type: string
-    CreateSessionResponse:
-      type: object
-      properties:
-        session_id:
-          type: string
-          example: rtbvdenadtz0is0rg2f16lzvdazyx1
-        session_name:
-          type: string
-          example: My first MirrorTab session
-        go_url:
-          type: string
-          format: uri
-          example: https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1
-        gocode:
-          type: string
-          example: funpurplecars
-        kill_time_UTC:
-          type: string
-          description: Unix datetime at which the session is removed.
-    RemoveSessionResponse:
-      type: object
-      properties:
-        removed:
-          type: string
-          example: 'true'
     Session:
       type: object
       properties:
@@ -180,13 +164,29 @@ components:
           items:
             type: string
           description: Optional URLs to open in the MirrorTab session.
-    ListSessionsRequest:
+    CreateSessionResponse:
       type: object
-      required:
-      - api_key
       properties:
-        api_key:
+        session_id:
           type: string
+          example: rtbvdenadtz0is0rg2f16lzvdazyx1
+        session_name:
+          type: string
+          example: My first MirrorTab session
+        go_url:
+          type: string
+          format: uri
+          example: https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1
+        gocode:
+          type: string
+          example: funpurplecars
+        kill_time_UTC:
+          type: string
+          description: Unix datetime at which the session is removed.
+    SessionMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Session'
   securitySchemes:
     apiKey:
       type: apiKey
