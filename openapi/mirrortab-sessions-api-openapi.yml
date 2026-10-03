@@ -96,46 +96,31 @@ paths:
           description: Invalid api_key.
 components:
   schemas:
-    ListSessionsRequest:
+    CreateSessionResponse:
       type: object
-      required:
-      - api_key
       properties:
-        api_key:
+        session_id:
           type: string
+          example: rtbvdenadtz0is0rg2f16lzvdazyx1
+        session_name:
+          type: string
+          example: My first MirrorTab session
+        go_url:
+          type: string
+          format: uri
+          example: https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1
+        gocode:
+          type: string
+          example: funpurplecars
+        kill_time_UTC:
+          type: string
+          description: Unix datetime at which the session is removed.
     RemoveSessionResponse:
       type: object
       properties:
         removed:
           type: string
           example: 'true'
-    RemoveSessionRequest:
-      type: object
-      required:
-      - api_key
-      - session_id
-      properties:
-        api_key:
-          type: string
-        session_id:
-          type: string
-    Session:
-      type: object
-      properties:
-        session_name:
-          type: string
-          example: My first MirrorTab Session
-        go_url:
-          type: string
-          format: uri
-          example: https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1
-        kill_time_UTC:
-          type: integer
-          format: int64
-          example: 1642101252956
-        gocode:
-          type: string
-          example: cat-coffee-396
     CreateSessionRequest:
       type: object
       required:
@@ -164,29 +149,44 @@ components:
           items:
             type: string
           description: Optional URLs to open in the MirrorTab session.
-    CreateSessionResponse:
-      type: object
-      properties:
-        session_id:
-          type: string
-          example: rtbvdenadtz0is0rg2f16lzvdazyx1
-        session_name:
-          type: string
-          example: My first MirrorTab session
-        go_url:
-          type: string
-          format: uri
-          example: https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1
-        gocode:
-          type: string
-          example: funpurplecars
-        kill_time_UTC:
-          type: string
-          description: Unix datetime at which the session is removed.
     SessionMap:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/Session'
+    Session:
+      type: object
+      properties:
+        session_name:
+          type: string
+          example: My first MirrorTab Session
+        go_url:
+          type: string
+          format: uri
+          example: https://mirrortab.com/go/rtbvdenadtz0is0rg2f16lzvdazyx1
+        kill_time_UTC:
+          type: integer
+          format: int64
+          example: 1642101252956
+        gocode:
+          type: string
+          example: cat-coffee-396
+    ListSessionsRequest:
+      type: object
+      required:
+      - api_key
+      properties:
+        api_key:
+          type: string
+    RemoveSessionRequest:
+      type: object
+      required:
+      - api_key
+      - session_id
+      properties:
+        api_key:
+          type: string
+        session_id:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey
